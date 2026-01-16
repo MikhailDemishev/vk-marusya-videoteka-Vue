@@ -1,0 +1,25 @@
+@use '../mixins' as *;
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__error-text {
+    color: var(--color-embarrassment);
+    margin: 0 0 12px;
+  }
+
+  .custom-input--auth:first-child {
+    .custom-input__icon {
+      width: 22px;
+      height: 18px;
+    }
+  }
+
+  .custom-input--auth:nth-child(2) {
+    .custom-input__icon {
+      width: 22px;
+      height: 12px;
+    }
+  }
+}

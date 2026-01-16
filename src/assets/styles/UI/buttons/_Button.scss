@@ -1,0 +1,84 @@
+.btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  white-space: nowrap;
+  padding: 0;
+  outline: none;
+
+  //variants
+
+  &--primary {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--color-white);
+    background-color: var(--color-montana);
+    border-radius: 28px;
+
+    &:hover,
+    &:focus-within {
+      background-color: var(--color-blue-jeans);
+    }
+  }
+
+  &--invert {
+    color: var(--color-invert-btn);
+    background-color: transparent;
+    border-radius: 28px;
+
+    &:hover,
+    &:focus-visible,
+    &:focus-within {
+      color: var(--color-white);
+      background-color: var(--bg-color-invert-btn-hover);
+    }
+  }
+
+  &--menu {
+    font-size: 24px;
+    line-height: 32px;
+    background-color: transparent;
+  }
+
+  &--menu-active {
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: var(--color-flamingo);
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      transform-origin: left;
+      transition: transform var(--transition-300);
+      position: absolute;
+    }
+  }
+
+  &--close {
+    padding: 15px;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    position: absolute;
+    border-radius: 50%;
+
+    & .btn__icon {
+      width: 19px;
+      height: 19px;
+    }
+  }
+
+  //sizes
+  &--m {
+    padding: 16px 48px;
+  }
+
+  &--s {
+    padding: 16px 22px;
+  }
+}
