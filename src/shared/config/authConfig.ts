@@ -1,6 +1,6 @@
 import type { AuthConfig, LoginKeys, RegisterKeys } from '@/assets/types/type.auth'
-import LoginForm from './LoginForm.vue'
-import RegisterForm from './RegisterForm.vue'
+import LoginForm from '@/components/Auth/LoginForm.vue'
+import RegisterForm from '@/components/Auth/RegisterForm.vue'
 
 export const AUTH_UI: {
   login: AuthConfig<LoginKeys>

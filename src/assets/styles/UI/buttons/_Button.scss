@@ -24,6 +24,17 @@
     }
   }
 
+  &--secondary {
+    border-radius: 28px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+
+    &:hover,
+    &:focus-within {
+      background-color: var(--color-east-bay);
+    }
+  }
+
   &--invert {
     color: var(--color-invert-btn);
     background-color: transparent;

@@ -3,7 +3,7 @@ import { LoginValidateSchema, type ValidateLoginForm } from '@/api/auth/login/lo
 import FormField from './FormField.vue'
 import Input from '../UI/Input.vue'
 import Button from '../UI/buttons/Button.vue'
-import { AUTH_UI } from './authConfig'
+import { AUTH_UI } from '../../shared/config/authConfig'
 import { reactive, ref } from 'vue'
 import { useLogin } from '@/composables/auth/useLogin'
 

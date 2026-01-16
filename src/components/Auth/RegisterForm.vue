@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RegisterValidateSchema, type ValidateRegForm } from '@/api/auth/register/register.schemas'
 import { useRegister } from '@/composables/auth/useRegister'
-import { AUTH_UI } from './authConfig'
+import { AUTH_UI } from '../../shared/config/authConfig'
 import { reactive, ref } from 'vue'
 import FormField from './FormField.vue'
 import Input from '../UI/Input.vue'

@@ -3,7 +3,7 @@ import AppLogo from '../UI/AppLogo.vue'
 import Button from '../UI/buttons/Button.vue'
 
 import { useAuthModalStatusStore } from '@/stores/auth.store'
-import { AUTH_UI } from './authConfig'
+import { AUTH_UI } from '../../shared/config/authConfig'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 

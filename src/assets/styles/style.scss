@@ -15,22 +15,38 @@
 //Layout
 @use './layout/Layout' as *;
 @use './layout/Header' as *;
+@use './layout/PageBoundary' as *;
+@use './layout/PageSection' as *;
 @use './layout/Footer' as *;
 @use './layout/ThemeSwitcher' as *;
+@use './layout/Grid' as *;
 
 //UI
 @use './UI/AppLogo' as *;
+@use './UI/Loader' as *;
 @use './UI/Nav' as *;
 @use './UI/Modal' as *;
 @use './UI/Socials' as *;
+@use './UI/RatingBadge' as *;
+@use './UI/MetaBlock' as *;
+@use './UI/Tabs' as *;
 
 //header
-@use './header/HeaderSearch.scss';
-@use './header/HeaderAuth.scss';
-@use './header/HeaderNav.scss';
+@use './header/HeaderSearch.scss' as *;
+@use './header/HeaderAuth.scss' as *;
+@use './header/HeaderNav.scss' as *;
 
 //Auth
-@use './Auth/AuthCard';
-@use './Auth/LoginForm';
-@use './Auth/RegisterForm';
+@use './Auth/AuthCard' as *;
+@use './Auth/LoginForm' as *;
+@use './Auth/RegisterForm' as *;
 @use './UI/FormField' as *;
+
+//Movie
+@use './Movie/MovieCard' as *;
+@use './Movie/MovieBanner' as *;
+@use './Movie/MovieInfo' as *;
+@use './Movie/MovieTrailer' as *;
+
+//Views
+@use './Views/HomeView' as *;

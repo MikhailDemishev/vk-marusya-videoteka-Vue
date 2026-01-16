@@ -1,38 +1,41 @@
 <script setup lang="ts">
-// import { useBookStore } from "@/stores/books.store";
-// import { storeToRefs } from "pinia";
-// import BookGrid from "@/components/BookGrid.vue";
-// import AppLoader from "@/components/UI/AppLoader.vue";
-// import PageError from "@/components/UI/PageError.vue";
-// import { BOOK_SUBJECTS } from "@/constants/booksApisExts";
-// import { useAuthStore } from "@/stores/auth.store";
-// import { useFavorites } from "@/stores/favorites.stores";
-// import { onMounted } from "vue";
+import MovieBanner from '@/components/Movie/MovieBanner.vue'
+import MovieCard from '@/components/Movie/MovieCard.vue'
+import { useRandomMovie } from '@/composables/movie/useRandomMovie'
+import { useTopTenMovies } from '@/composables/movie/useTopTenMovies'
+import Grid from '@/layout/Grid.vue'
+import PageBoundary from '@/layout/PageBoundary.vue'
+import PageLayout from '@/layout/PageLayout.vue'
+import PageSection from '@/layout/PageSection.vue'
 
-// const bookStore = useBookStore();
-// const { isPending } = storeToRefs(bookStore);
-// const { currentGenre } = storeToRefs(bookStore);
-// const { filteredBooks } = storeToRefs(bookStore);
+import { computed } from 'vue'
 
-// const { errorState, setGenreExt } = bookStore;
-// const genres = Object.entries(BOOK_SUBJECTS);
-
-// //favorites
-
-// const myBookStore = useFavorites();
-// const { favorites } = storeToRefs(myBookStore);
-// const { isInFavorites, addFavorite } = myBookStore;
-// console.log(favorites.value);
-
-// onMounted(() => {
-//   bookStore.loadBooks();
-// });
-// const { isAuth } = storeToRefs(useAuthStore());
-
-//showBySearch
+const randomMovieQuery = useRandomMovie()
+const topTenQuery = useTopTenMovies()
+const isLoading = computed(() => randomMovieQuery.isPending.value || topTenQuery.isPending.value)
+const error = computed(() => randomMovieQuery.error.value || topTenQuery.error.value)
 </script>
 
 <template>
-  <div>home page</div>
+  <PageBoundary :is-loading="isLoading" :is-error="error">
+    <PageLayout page-name="home">
+      <MovieBanner
+        :movie="randomMovieQuery.data.value ?? null"
+        mode="home"
+        @refetch="randomMovieQuery.refetch"
+      />
+      <PageSection title="Топ 10 фильмов" section-name="top" />
+      <Grid :items="topTenQuery.data.value || []" class-ext="movie">
+        <template #default="{ item, index }">
+          <MovieCard
+            :id="item.id"
+            :index="index + 1"
+            :title="item.title"
+            :image-url="item.backdropUrl"
+          />
+        </template>
+      </Grid>
+    </PageLayout>
+  </PageBoundary>
 </template>
 <style></style>
