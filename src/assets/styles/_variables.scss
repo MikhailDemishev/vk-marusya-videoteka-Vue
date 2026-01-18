@@ -56,8 +56,11 @@ $vp-tablet: 1023px;
   /*nav*/
   --color-nav-burger: var(--color-black);
 
-  /*colors*/
+  //movie-info
+  --color-movie-info-label-name: var(--color-white);
+  --color-movie-info-label-line: var(--color-translucent);
 
+  /*colors*/
   --color-white: #ffffff;
   --color-black: #000000;
   --color-black-50: rgba(0, 0, 0, 0.5);
@@ -141,4 +144,8 @@ $vp-tablet: 1023px;
 
   /*nav*/
   --color-nav-burger: var(--color-white);
+
+  //movie-info
+  --color-movie-info-label-name: var(--color-black);
+  --color-movie-info-label-line: var(--color-black);
 }

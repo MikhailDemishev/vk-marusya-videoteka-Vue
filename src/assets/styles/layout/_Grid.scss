@@ -15,10 +15,16 @@
 }
 
 .genres-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .genres-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 100%;
+
+  @include vp-1023 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   @include vp-767 {
     display: flex;
     flex-direction: column;

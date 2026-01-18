@@ -1,0 +1,22 @@
+import type { ITab } from '@/assets/types/type.tabs'
+
+export const profileTabs: ITab[] = [
+  {
+    tabId: 'favorites',
+    label: 'Избранные фильмы',
+    labelMobile: 'Избранное',
+    icon: 'heart-empty',
+    iconWidth: '24',
+    iconHeight: '24',
+    TabClassName: 'profile-tab',
+  },
+  {
+    tabId: 'profile',
+    label: 'Настройка аккаунта',
+    labelMobile: 'Настройки',
+    icon: 'icon-avatar',
+    iconWidth: '16',
+    iconHeight: '21',
+    TabClassName: 'profile-tab',
+  },
+]

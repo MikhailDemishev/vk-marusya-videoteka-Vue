@@ -12,30 +12,15 @@ const loginMutation = useLogin()
 const hasTriedToLogin = ref(false)
 const hasFinishedLogin = ref(false)
 
-/**
- * form state
- */
 const form = reactive<ValidateLoginForm>({
   email: '',
   password: '',
 })
 
-/**
- * errors state
- */
 const errors = reactive<Partial<Record<keyof ValidateLoginForm, string>>>({})
-
-/**
- * reset mutation errors on input change
- */
 const resetErrorsOnChange = () => loginMutation.reset()
-
-/**
- * submit handler (аналог handleSubmit)
- */
 const handleSubmit = async () => {
   hasTriedToLogin.value = true
-  // очистка ошибок
   Object.keys(errors).forEach((key) => {
     delete errors[key as keyof ValidateLoginForm]
   })

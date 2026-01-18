@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import type { ITabProps } from '@/assets/types/type.tabs'
+import type { ITabProps, ProfileTabId } from '@/assets/types/type.tabs'
 
 const props = defineProps<ITabProps>()
 
 const emit = defineEmits<{
-  (e: 'change', tabId: string): void
+  (e: 'change', tabId: ProfileTabId): void
 }>()
 
-const handleChange = (tabId: string) => {
+const handleChange = (tabId: ProfileTabId) => {
   emit('change', tabId)
 }
 </script>
@@ -28,7 +28,7 @@ const handleChange = (tabId: string) => {
           :height="tab.iconHeight"
           aria-hidden="true"
         >
-          <use :href="`/sprite#${tab.icon}`" />
+          <use :href="`/sprite.svg#${tab.icon}`" />
         </svg>
       </span>
 

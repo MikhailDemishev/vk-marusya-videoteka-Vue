@@ -6,3 +6,9 @@ export type GenreObject = {
   name: string
   image: string
 }
+
+export interface IGenreCard {
+  genre: string
+  to: string
+  imgSource?: string
+}

@@ -48,5 +48,20 @@
 @use './Movie/MovieInfo' as *;
 @use './Movie/MovieTrailer' as *;
 
+//Genre
+@use './Genre/GenreCard' as *;
+
+//Dropdown
+@use './Dropdown/DropDownWindow';
+@use './Dropdown/MovieSearchCard';
+@use './Dropdown/DropDownList';
+
+//Profile
+@use './UI/ProfileSettings' as *;
+
 //Views
 @use './Views/HomeView' as *;
+@use './Views/MovieView' as *;
+@use './Views/ProfileView' as *;
+@use './Views/GenresView' as *;
+@use './Views/GenreView' as *;

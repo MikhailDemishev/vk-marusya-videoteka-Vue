@@ -1,5 +1,7 @@
+export type ProfileTabId = 'profile' | 'favorites'
+
 export interface ITab {
-  tabId: string
+  tabId: ProfileTabId
   label: string
   labelMobile: string
   icon: string
@@ -10,6 +12,6 @@ export interface ITab {
 
 export interface ITabProps {
   tabs: ITab[]
-  activeTab: string
+  activeTab: ProfileTabId
   classExt: string
 }

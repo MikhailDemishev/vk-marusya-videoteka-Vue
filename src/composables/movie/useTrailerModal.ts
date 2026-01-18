@@ -1,14 +1,14 @@
-import { useAppDispatch } from "../../../app/hooks/reduxHooks";
-import { useModalOpenClose } from "../../modal/hooks/useModalOpenClose";
-import { setTrailerData } from "../model/trailerUrlSlice";
+import { useModalStore } from '@/stores/modal.store'
+import { useTrailerDataStore } from '@/stores/trailer.store'
+import type { IMovieTrailer } from '@/assets/types/type.movie'
 
 export const useTrailerModal = () => {
-    const { handleOpenModal } = useModalOpenClose();
-    const dispatch = useAppDispatch();
+  const { setTrailerData } = useTrailerDataStore()
+  const { openModal } = useModalStore()
 
-    const handleTrailerOpen = (trailerUrl: string | null | undefined, trailerDesc: string | null | undefined) => {
-        dispatch(setTrailerData({ trailerUrl, trailerDesc }));
-        handleOpenModal("trailer")
-    }
-    return { handleTrailerOpen };
+  const handleTrailerOpen = (trailer: IMovieTrailer) => {
+    setTrailerData(trailer)
+    openModal('trailer')
+  }
+  return { handleTrailerOpen }
 }

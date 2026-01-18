@@ -24,17 +24,18 @@ const error = computed(() => randomMovieQuery.error.value || topTenQuery.error.v
         mode="home"
         @refetch="randomMovieQuery.refetch"
       />
-      <PageSection title="Топ 10 фильмов" section-name="top" />
-      <Grid :items="topTenQuery.data.value || []" class-ext="movie">
-        <template #default="{ item, index }">
-          <MovieCard
-            :id="item.id"
-            :index="index + 1"
-            :title="item.title"
-            :image-url="item.backdropUrl"
-          />
-        </template>
-      </Grid>
+      <PageSection title="Топ 10 фильмов" section-name="top">
+        <Grid :items="topTenQuery.data.value || []" class-ext="movie">
+          <template #default="{ item, index }">
+            <MovieCard
+              :id="item.id"
+              :index="index + 1"
+              :title="item.title"
+              :image-url="item.posterUrl"
+            />
+          </template>
+        </Grid>
+      </PageSection>
     </PageLayout>
   </PageBoundary>
 </template>
