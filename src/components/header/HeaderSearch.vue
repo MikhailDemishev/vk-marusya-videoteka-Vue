@@ -18,6 +18,11 @@ const emit = defineEmits<{
   (e: 'resetMobile'): void
 }>()
 
+const handleResetAndCloseMobile = () => {
+  resetSearch()
+  emit('resetMobile')
+}
+
 const { handleInput, foundMovies, resetSearch, searchQuery } = useShowSearchResults()
 </script>
 <template>
@@ -27,8 +32,7 @@ const { handleInput, foundMovies, resetSearch, searchQuery } = useShowSearchResu
       variant="search"
       icon-id="icon-search"
       @update:modelValue="handleInput"
-      @reset="resetSearch()"
-      @icon-click="emit('resetMobile')"
+      @reset="handleResetAndCloseMobile"
       :reset-field="true"
       :model-value="searchQuery"
       :is-error="isError"

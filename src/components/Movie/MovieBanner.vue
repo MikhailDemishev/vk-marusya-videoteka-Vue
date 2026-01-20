@@ -25,7 +25,6 @@ const addedToFavorites = computed(() => filmInFavorites(props.movie!.id))
           <p class="movie-banner__description">{{ props.movie.plot }}</p>
         </div>
         <div class="movie-banner__actions">
-          <!--не забыть добавить действие для открытия трейлера-->
           <Button
             class="movie-banner__button"
             variant="primary"

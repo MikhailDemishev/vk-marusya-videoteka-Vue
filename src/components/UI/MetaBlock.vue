@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import type { Movie } from '@/api/movies/movies.schemas'
-import { translatedGenres } from '@/utils/translateGenres'
 import { computed } from 'vue'
 import RatingBadge from './RatingBadge.vue'
 import { formatMinutes } from '@/utils/formatMinutes'
+import { translatedGenreList } from '@/utils/genreAddData'
 
 const props = defineProps<{
   movie: Movie
   classExt: string
 }>()
 
-const genresToRender = computed(() => translatedGenres(props.movie.genres))
+const genresToRender = computed(() => translatedGenreList(props.movie.genres))
 const formattedMinutes = computed(() => formatMinutes(props.movie.runtime))
 </script>
 

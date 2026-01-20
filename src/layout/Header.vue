@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import HeaderAuth from '@/components/header/HeaderAuth.vue'
-import HeaderSearch from '@/components/header/HeaderSearch.vue'
+import HeaderAuth from '@/components/Header/HeaderAuth.vue'
+import HeaderSearch from '@/components/Header/HeaderSearch.vue'
 import AppLogo from '@/components/UI/AppLogo.vue'
 import BurgerButton from '@/components/UI/buttons/BurgerButton.vue'
 import Button from '@/components/UI/buttons/Button.vue'
@@ -43,7 +43,7 @@ const headerNavItems = [
             <HeaderSearch
               :is-error="false"
               class="header__search header-search"
-              v-on:reset-mobile="resetToDefault"
+              @reset-mobile="resetToDefault"
             />
           </div>
           <HeaderAuth />

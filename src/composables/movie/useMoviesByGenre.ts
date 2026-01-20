@@ -1,11 +1,11 @@
 import { getMoviesByGenre } from '@/api/movies/movies.api'
-import type { GenreKey } from '@/assets/types/type.genre'
 import { useQuery } from '@tanstack/vue-query'
+import type { Ref } from 'vue'
 
-export function useMoviesByGenre(genre: GenreKey, page: number = 1, count: number = 15) {
+export function useMoviesByGenre(genre: string, page: Ref<number>, count = 50) {
   return useQuery({
-    queryKey: ['moviesByGenre', genre, page, count],
-    queryFn: () => getMoviesByGenre(genre, page, count),
+    queryKey: ['moviesByGenre', genre, page],
+    queryFn: () => getMoviesByGenre(genre, page.value, count),
     retry: false,
   })
 }

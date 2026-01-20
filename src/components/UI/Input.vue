@@ -8,7 +8,6 @@ withDefaults(defineProps<CustomInputProps>(), {
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
-  (e: 'iconClick'): void
   (e: 'reset'): void
   (e: 'focus'): void
   (e: 'blur'): void
@@ -23,7 +22,7 @@ const emit = defineEmits<{
       isError && 'custom-input--error',
     ]"
   >
-    <svg v-if="iconId" class="custom-input__icon" aria-hidden="true" @click="emit('iconClick')">
+    <svg v-if="iconId" class="custom-input__icon" aria-hidden="true">
       <use :href="`/sprite.svg#${iconId}`" />
     </svg>
     <input

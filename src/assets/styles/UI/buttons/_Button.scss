@@ -1,3 +1,5 @@
+@use '../../mixins' as *;
+
 .btn {
   cursor: pointer;
   display: flex;
@@ -19,8 +21,15 @@
     border-radius: 28px;
 
     &:hover,
-    &:focus-within {
+    &:focus-visible {
       background-color: var(--color-blue-jeans);
+    }
+
+    @include vp-767 {
+      &:hover,
+      &:focus-visible {
+        background-color: var(--color-montana);
+      }
     }
   }
 
@@ -30,8 +39,15 @@
     color: var(--color-white);
 
     &:hover,
-    &:focus-within {
+    &:focus-visible {
       background-color: var(--color-east-bay);
+    }
+
+    @include vp-767 {
+      &:hover,
+      &:focus-visible {
+        background-color: var(--color-black);
+      }
     }
   }
 
@@ -41,8 +57,7 @@
     border-radius: 28px;
 
     &:hover,
-    &:focus-visible,
-    &:focus-within {
+    &:focus-visible {
       color: var(--color-white);
       background-color: var(--bg-color-invert-btn-hover);
     }

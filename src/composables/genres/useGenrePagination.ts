@@ -1,47 +1,53 @@
 import { computed, ref, watch } from 'vue'
 import type { Movie } from '@/api/movies/movies.schemas'
 import { useMoviesByGenre } from '../movie/useMoviesByGenre'
-import type { GenreKey } from '@/assets/types/type.genre'
 
-export const useGenrePagination = (genre: GenreKey) => {
-  // === useState ===
-  const page = ref(1)
-  const movies = ref<Movie[]>([])
+export const useGenrePagination = (genre: string) => {
+  const serverPage = ref(1)
+  const visibleCount = ref(10)
+  const cache = ref<Movie[]>([])
 
-  const { data, isPending, error } = useMoviesByGenre(genre, page.value)
+  const { data, isPending, error } = useMoviesByGenre(genre, serverPage, 50)
+
+  const visibleMovies = computed(() => cache.value.slice(0, visibleCount.value))
+
+  const hasHidden = computed(() => visibleCount.value < cache.value.length)
+  const hasMoreFromServer = ref(true)
 
   const loadMore = () => {
-    page.value += 1
+    if (visibleCount.value + 10 <= cache.value.length) {
+      visibleCount.value += 10
+      return
+    }
+
+    serverPage.value += 1
   }
 
-  const hasMore = computed(() => (data.value ? data.value.length >= 15 : false))
+  watch(data, (newData) => {
+    if (!newData) return
 
-  watch(
-    () => [data.value, page.value],
-    () => {
-      if (!data.value) return
+    cache.value.push(...newData)
 
-      if (page.value === 1) {
-        movies.value = data.value
-      } else {
-        movies.value = [...movies.value, ...data.value]
-      }
-    },
-    { immediate: true },
-  )
-
+    if (newData.length < 50) {
+      hasMoreFromServer.value = false
+    }
+  })
   watch(
     () => genre,
     () => {
-      page.value = 1
+      serverPage.value = 1
+      visibleCount.value = 10
+      cache.value = []
+      hasMoreFromServer.value = true
     },
   )
 
+  const showLoadMore = computed(() => hasHidden.value || hasMoreFromServer.value)
   return {
     loadMore,
-    page,
-    movies,
-    hasMore,
+    showLoadMore,
+    serverPage,
+    visibleMovies,
     error,
     isPending,
   }

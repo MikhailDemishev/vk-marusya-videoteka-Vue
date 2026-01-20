@@ -7,7 +7,12 @@ export function useDeleteFavorite() {
   const favoritesMutation = useMutation({
     mutationFn: (id: number | string) => deleteFavorite(id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['favorites'] })
+      queryClient.invalidateQueries({
+        predicate: (query) => {
+          const key = query.queryKey[0]
+          return key === 'profile' || key === 'favorites'
+        },
+      })
     },
 
     onError: (error: unknown) => {
