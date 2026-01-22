@@ -1,24 +1,13 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
 
-export const useThemeStore = defineStore(
-  'theme',
-  () => {
-    const themeColor = ref<'dark' | 'light'>('dark')
-
-    function setThemeColor(value: 'dark' | 'light') {
-      themeColor.value = value
-    }
-
-    return {
-      themeColor,
-      setThemeColor,
-    }
-  },
-  {
-    persist: {
-      key: 'themeColor',
-      storage: localStorage,
+export const useThemeStore = defineStore('theme', {
+  state: () => ({
+    themeColor: (localStorage.getItem('themeColor') as 'dark' | 'light') || 'dark',
+  }),
+  actions: {
+    setThemeColor(value: 'dark' | 'light') {
+      this.themeColor = value
+      localStorage.setItem('themeColor', value)
     },
   },
-)
+})

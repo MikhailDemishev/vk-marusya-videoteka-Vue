@@ -1,4 +1,3 @@
-import type { GenreKey } from '@/assets/types/type.genre'
 import { apiRequest } from '../http'
 import { MovieList, MovieSchema, type Movie } from './movies.schemas'
 
@@ -35,7 +34,7 @@ export function get10Movies() {
   })
 }
 
-export function getMoviesByGenre(genre: GenreKey, page = 1, count = 15) {
+export function getMoviesByGenre(genre: string, page = 0, count = 15) {
   return apiRequest<Movie[]>({
     schema: MovieList,
     url: '/movie',
